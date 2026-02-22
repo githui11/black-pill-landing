@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0D0D12;
+  --color-accent: #C9A84C;
+  --color-background: #0a0a0e;
+  --color-surface: #14141A;
+  --color-text: #FAF8F5;
+  --color-text-muted: #8E8E9F;
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html, body {
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden;
+    cursor: auto;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.05;
+  }
+}
+
+/* Custom easing for magnetic buttons and interactions */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+.btn-hover-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+button:hover .btn-hover-layer {
+  transform: translateY(0);
+}
+
+.link-hover {
+  transition: transform 0.2s ease-out;
+}
+.link-hover:hover {
+  transform: translateY(-1px);
+}
